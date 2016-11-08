@@ -1,0 +1,96 @@
+
+ Matrix as in file:
+  90     75     75     80  
+  35     85     55     65  
+  125     95     90     105  
+  45     110     95     115  
+
+
+ Reduced Matrix:
+  15     0     0     0  
+  0     50     20     25  
+  35     5     0     10  
+  0     65     50     65  
+
+
+ Zeros are located at follows: (0, 1) (3, 0) (2, 2) (1, 0) (0, 3) (0, 2)
+
+ Current best combination to cover all zeros:  3
+	Horizontal line through row : 0
+	Horizontal line through row : 2
+	Vertical line through column : 0
+
+  The assignments are as follows: 
+	 At:  0 1  Value:  75
+	 At:  3 0  Value:  45
+	 At:  2 2  Value:  90
+
+ Current solution isn't optimal as lines are not enough
+
+
+ Ticked rows:   [1, 3]
+ Ticked cols:   [0]
+
+ Marking unmarked rows and marked cols:   3
+	Horizontal line through row : 0
+	Horizontal line through row : 2
+	Vertical line through column : 0
+
+ Current solution isn't optimal as lines are not enough
+ Now going for uncovering elements pass
+
+ Uncovered matrix
+  35     0     0     0  
+  0     30     0     5  
+  55     5     0     10  
+  0     45     30     45  
+
+
+ New Zeros are located at follows: (0, 1) (1, 2) (3, 0) (2, 2) (1, 0) (0, 3) (0, 2)
+
+ Current best combination to cover all zeros:  3
+	Horizontal line through row : 0
+	Vertical line through column : 0
+	Vertical line through column : 2
+
+  The assignments are as follows: 
+	 At:  0 1  Value:  75
+	 At:  1 2  Value:  55
+	 At:  3 0  Value:  45
+
+ Current solution isn't optimal as lines are not enough
+
+
+ Ticked rows:   [1, 2, 3]
+ Ticked cols:   [0, 2]
+
+ Marking unmarked rows and marked cols:   3
+	Horizontal line through row : 0
+	Vertical line through column : 0
+	Vertical line through column : 2
+
+ Current solution isn't optimal as lines are not enough
+ Now going for uncovering elements pass
+
+ Uncovered matrix
+  40     0     5     0  
+  0     25     0     0  
+  55     0     0     5  
+  0     40     30     40  
+
+
+ New Zeros are located at follows: (0, 1) (1, 2) (1, 3) (3, 0) (2, 1) (2, 2) (0, 3) (1, 0)
+
+ Current best combination to cover all zeros:  4
+	Horizontal line through row : 0
+	Horizontal line through row : 1
+	Horizontal line through row : 2
+	Horizontal line through row : 3
+
+  The assignments are as follows: 
+	 At:  0 1  Value:  75
+	 At:  3 0  Value:  45
+	 At:  1 3  Value:  65
+	 At:  2 2  Value:  90
+
+ Current solution is optimal and the minimal cost:  275

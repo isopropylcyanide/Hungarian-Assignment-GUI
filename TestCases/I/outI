@@ -1,0 +1,57 @@
+
+ No dummy required
+
+ Matrix as in file:
+  25     15     22  
+  31     20     19  
+  35     24     17  
+
+
+ Reduced Matrix:
+  0     0     7  
+  2     1     0  
+  8     7     0  
+
+
+ Zeros are located at follows: (0, 1) (1, 2) (0, 0) (2, 2)
+
+ Current best combination to cover all zeros:  2
+	Horizontal line through row : 0
+	Vertical line through column : 2
+
+  The assignments are as follows: 
+	 At:  0 1  Value:  15
+	 At:  1 2  Value:  19
+
+ Current solution isn't optimal as lines are not enough
+
+
+ Ticked rows:   [1, 2]
+ Ticked cols:   [2]
+
+ Marking unmarked rows and marked cols:   2
+	Horizontal line through row : 0
+	Vertical line through column : 2
+
+ Current solution isn't optimal as lines are not enough
+ Now going for uncovering elements pass
+
+ Uncovered matrix
+  0     0     8  
+  1     0     0  
+  7     6     0  
+
+
+ New Zeros are located at follows: (0, 1) (1, 2) (0, 0) (1, 1) (2, 2)
+
+ Current best combination to cover all zeros:  3
+	Horizontal line through row : 0
+	Horizontal line through row : 1
+	Horizontal line through row : 2
+
+  The assignments are as follows: 
+	 At:  0 0  Value:  25
+	 At:  1 1  Value:  20
+	 At:  2 2  Value:  17
+
+ Current solution is optimal and the minimal cost:  62

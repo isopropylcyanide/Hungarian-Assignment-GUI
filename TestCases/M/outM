@@ -1,0 +1,165 @@
+
+ Matrices aren't of the same order
+ Adding dummy
+
+
+ Matrix as in file:
+  12     10     15     22     18     8  
+  10     18     25     13     16     12  
+  11     10     3     8     5     9  
+  6     14     10     13     13     12  
+  8     12     11     7     13     10  
+  0     0     0     0     0     0  
+
+
+ Reduced Matrix:
+  4     2     7     14     10     0  
+  0     8     15     3     6     2  
+  8     7     0     5     2     6  
+  0     8     4     7     7     6  
+  1     5     4     0     6     3  
+  0     0     0     0     0     0  
+
+
+ Zeros are located at follows: (5, 4) (4, 3) (3, 0) (5, 5) (0, 5) (5, 0) (2, 2) (5, 1) (1, 0) (5, 2) (5, 3)
+
+ Current best combination to cover all zeros:  5
+	Horizontal line through row : 0
+	Horizontal line through row : 2
+	Horizontal line through row : 4
+	Horizontal line through row : 5
+	Vertical line through column : 0
+
+  The assignments are as follows: 
+	 At:  3 0  Value:  6
+	 At:  5 4  Value:  0
+	 At:  0 5  Value:  8
+	 At:  4 3  Value:  7
+	 At:  2 2  Value:  3
+
+ Current solution isn't optimal as lines are not enough
+
+
+ Ticked rows:   [1, 3]
+ Ticked cols:   [0]
+
+ Marking unmarked rows and marked cols:   5
+	Horizontal line through row : 0
+	Horizontal line through row : 2
+	Horizontal line through row : 4
+	Horizontal line through row : 5
+	Vertical line through column : 0
+
+ Current solution isn't optimal as lines are not enough
+ Now going for uncovering elements pass
+
+ Uncovered matrix
+  6     2     7     14     10     0  
+  0     6     13     1     4     0  
+  10     7     0     5     2     6  
+  0     6     2     5     5     4  
+  3     5     4     0     6     3  
+  2     0     0     0     0     0  
+
+
+ New Zeros are located at follows: (5, 4) (5, 5) (3, 0) (1, 5) (0, 5) (4, 3) (2, 2) (5, 1) (1, 0) (5, 2) (5, 3)
+
+ Current best combination to cover all zeros:  5
+	Horizontal line through row : 2
+	Horizontal line through row : 4
+	Horizontal line through row : 5
+	Vertical line through column : 0
+	Vertical line through column : 5
+
+  The assignments are as follows: 
+	 At:  3 0  Value:  6
+	 At:  1 5  Value:  12
+	 At:  5 4  Value:  0
+	 At:  4 3  Value:  7
+	 At:  2 2  Value:  3
+
+ Current solution isn't optimal as lines are not enough
+
+
+ Ticked rows:   [0, 1, 3]
+ Ticked cols:   [0, 5]
+
+ Marking unmarked rows and marked cols:   5
+	Horizontal line through row : 2
+	Horizontal line through row : 4
+	Horizontal line through row : 5
+	Vertical line through column : 0
+	Vertical line through column : 5
+
+ Current solution isn't optimal as lines are not enough
+ Now going for uncovering elements pass
+
+ Uncovered matrix
+  6     1     6     13     9     0  
+  0     5     12     0     3     0  
+  11     7     0     5     2     7  
+  0     5     1     4     4     4  
+  4     5     4     0     6     4  
+  3     0     0     0     0     1  
+
+
+ New Zeros are located at follows: (5, 4) (1, 3) (3, 0) (1, 5) (0, 5) (4, 3) (2, 2) (5, 1) (1, 0) (5, 2) (5, 3)
+
+ Current best combination to cover all zeros:  5
+	Horizontal line through row : 2
+	Horizontal line through row : 5
+	Vertical line through column : 0
+	Vertical line through column : 3
+	Vertical line through column : 5
+
+  The assignments are as follows: 
+	 At:  3 0  Value:  6
+	 At:  5 4  Value:  0
+	 At:  1 3  Value:  13
+	 At:  0 5  Value:  8
+	 At:  2 2  Value:  3
+
+ Current solution isn't optimal as lines are not enough
+
+
+ Ticked rows:   [0, 1, 3, 4]
+ Ticked cols:   [0, 3, 5]
+
+ Marking unmarked rows and marked cols:   5
+	Horizontal line through row : 2
+	Horizontal line through row : 5
+	Vertical line through column : 0
+	Vertical line through column : 3
+	Vertical line through column : 5
+
+ Current solution isn't optimal as lines are not enough
+ Now going for uncovering elements pass
+
+ Uncovered matrix
+  6     0     5     13     8     0  
+  0     4     11     0     2     0  
+  12     7     0     6     2     8  
+  0     4     0     4     3     4  
+  4     4     3     0     5     4  
+  4     0     0     1     0     2  
+
+
+ New Zeros are located at follows: (0, 1) (3, 2) (1, 3) (3, 0) (5, 4) (1, 5) (0, 5) (4, 3) (2, 2) (5, 1) (1, 0) (5, 2)
+
+ Current best combination to cover all zeros:  6
+	Horizontal line through row : 0
+	Horizontal line through row : 1
+	Horizontal line through row : 2
+	Horizontal line through row : 3
+	Horizontal line through row : 4
+	Horizontal line through row : 5
+
+  The assignments are as follows: 
+	 At:  0 1  Value:  10
+	 At:  1 5  Value:  12
+	 At:  5 4  Value:  0
+	 At:  4 3  Value:  7
+	 At:  2 2  Value:  3
+	 At:  3 0  Value:  6
+
+ Current solution is optimal and the minimal cost:  38

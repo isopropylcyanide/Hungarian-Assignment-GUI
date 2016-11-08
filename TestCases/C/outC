@@ -1,0 +1,63 @@
+
+ Matrix as in file:
+  82     83     69     92  
+  77     37     49     92  
+  11     69     5     96  
+  8     9     98     23  
+
+
+ Reduced Matrix:
+  13     14     0     8  
+  40     0     12     40  
+  6     64     0     76  
+  0     1     90     0  
+
+
+ Zeros are located at follows: (3, 0) (3, 3) (2, 2) (0, 2) (1, 1)
+
+ Current best combination to cover all zeros:  3
+	Horizontal line through row : 1
+	Horizontal line through row : 3
+	Vertical line through column : 2
+
+  The assignments are as follows: 
+	 At:  3 0  Value:  8
+	 At:  1 1  Value:  37
+	 At:  2 2  Value:  5
+
+ Current solution isn't optimal as lines are not enough
+
+
+ Ticked rows:   [0, 2]
+ Ticked cols:   [2]
+
+ Marking unmarked rows and marked cols:   3
+	Horizontal line through row : 1
+	Horizontal line through row : 3
+	Vertical line through column : 2
+
+ Current solution isn't optimal as lines are not enough
+ Now going for uncovering elements pass
+
+ Uncovered matrix
+  7     8     0     2  
+  40     0     18     40  
+  0     58     0     70  
+  0     1     96     0  
+
+
+ New Zeros are located at follows: (3, 3) (3, 0) (1, 1) (2, 0) (2, 2) (0, 2)
+
+ Current best combination to cover all zeros:  4
+	Horizontal line through row : 0
+	Horizontal line through row : 1
+	Horizontal line through row : 2
+	Horizontal line through row : 3
+
+  The assignments are as follows: 
+	 At:  2 0  Value:  11
+	 At:  0 2  Value:  69
+	 At:  3 3  Value:  23
+	 At:  1 1  Value:  37
+
+ Current solution is optimal and the minimal cost:  140
