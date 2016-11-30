@@ -8,6 +8,10 @@ from collections import deque
 from sys import maxint, argv, exit
 
 
+_GUI_ROW, _GUI_COL, _GUI_M = 0, 0, None
+_backup = None
+
+
 class HorzLine:
     """Denotes a horizontal line across the matrix"""
 
@@ -78,6 +82,7 @@ class HungarianAssignment:
 
     def checkAssignments(self):
         """What is the minimum assignment possible to cover all zeros"""
+        global _backup
 
         bestComb = self.getSetOfCrossingLines()
         print '\n Current best combination to cover all zeros: ', len(bestComb)
@@ -175,6 +180,7 @@ class HungarianAssignment:
             - Repeat the above procedure till no more can be ticked
             QuickThink: Use BFS and sets for row/cols
         """
+        global _backup
         tickRows, tickCols = set(xrange(self.row)), set()
         # Tick rows without assignment
         for i in assignments:
@@ -308,9 +314,25 @@ def readInput():
         return solver
 
 
-if __name__ == '__main__':
+def fillFromGUI():
+    """Creates Hungarian instance problem using GUI filled matrix"""
+    solver = HungarianAssignment()
+    n, m = _GUI_ROW, _GUI_COL
+    solver.M = _GUI_M
+    if n != m:
+        print '\n Matrices aren\'t of the same order'
+        print ' Adding dummy\n'
+        solver.getDummy(n, m)
+    solver.row = solver.col = max(n, m)
+    return solver
+
+
+def main():
+    global _backup
     # Obtain matrix from file
-    solver = readInput()
+    # or use matrix already filled by the GUI
+    solver = fillFromGUI() if _GUI_M else readInput()
+
     if solver.M is None:
         print ' Error occured during execution\n'
         exit()
@@ -329,3 +351,7 @@ if __name__ == '__main__':
 
     # Check assignments
     solver.checkAssignments()
+
+
+if __name__ == '__main__':
+    main()
