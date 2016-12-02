@@ -7,15 +7,20 @@ from itertools import combinations
 from collections import deque
 from sys import maxint, argv, exit
 
-
 _GUI_ROW, _GUI_COL, _GUI_M = 0, 0, None
 _backup = None
+
+# Delimit the output of the program by a hyphen so that the GUI program
+# can separate the values. Give provision to store the final results
+delimiter = '\n-'
+finalResult = None
 
 
 class HorzLine:
     """Denotes a horizontal line across the matrix"""
 
     def __init__(self, pos):
+        self.finalResult = None
         self.pos = pos
         self.type = "Horizontal"
         self.across = "row"
@@ -49,7 +54,7 @@ class HungarianAssignment:
             for j in i:
                 print ' ', j, ' ',
             print
-        print
+        print delimiter
 
     def reduceMatrix(self):
         """Returns a row and column reduced matrix"""
@@ -75,39 +80,52 @@ class HungarianAssignment:
                     self.Z.add((i, j))
 
     def printZeroLocations(self):
-        print '\n Zeros are located at follows:',
+        print '\n Zeros are located at follows:\n\n',
         for i in self.Z:
-            print i,
-        print
+            print i
+        print delimiter
 
     def checkAssignments(self):
         """What is the minimum assignment possible to cover all zeros"""
         global _backup
 
         bestComb = self.getSetOfCrossingLines()
-        print '\n Current best combination to cover all zeros: ', len(bestComb)
+        len_BC = len(bestComb)
+        print '\n Current best combination covering all zeros: %d\n' % (len_BC)
         for i in bestComb:
-            print '\t%s line through %s : %d' % (i.type, i.across, i.pos)
+            print '\t%s line through %s : %d\n' % (i.type, i.across, i.pos)
+        print delimiter
 
         curAssignments, totalVal = self.getAssignment(), 0
-        print '\n  The assignments are as follows: \n',
+        print '\n  The assignments are as follows: \n\n',
         for i in curAssignments:
             x, y = i[0], i[1]
-            print '\t At: ', x, y, ' Value: ',  _backup[x][y]
+            print '\t At: ', x, y, ' Value: ',  _backup[x][y], '\n'
             totalVal += _backup[x][y]
 
         if len(bestComb) != self.row:
             # Perform the following steps
             print '\n Current solution isn\'t optimal: lines are not enough\n'
+            print delimiter
             self.tickRowsAndColumns(curAssignments)
 
         else:
+            self.finalResult = '\n  Optimal assignments are as follows: \n\n'
             print '\n Current solution is optimal: Minimal cost: ', totalVal
+            print delimiter
+            print '\n  Final assignments are as follows: \n\n',
+            for i in curAssignments:
+                x, y = i[0], i[1]
+                print '\t At: ', x, y, ' Value: ',  _backup[x][y], '\n'
+                self.finalResult += '\t At: %d %d \tValue: %d\n\n' % (
+                    x, y, _backup[x][y])
+            self.finalResult += '\n Minimum cost incurred: %d \n' % (totalVal)
             return
 
     def getDummy(self, n, m):
         """Add a dummy variable when rows != columns"""
         _m = max(n, m)
+        print self.M
         for i in xrange(_m):
             for j in xrange(_m):
                 self.M[i][j] = 0 if self.M[i][j] == -1 else self.M[i][j]
@@ -121,13 +139,11 @@ class HungarianAssignment:
         # We have to choose maximum n lines for crossing out all zeros
         # The assignment is optimal when the minimal lines are the order of the
         # matrix
-        allComb = []
+        allComb, bestComb = [], []
         for i in xrange(1, self.row + 1):
             allComb.extend(combinations(horzLines + vertLines, i))
 
         # Find the combination which covers the lists in the minimumLines
-        bestComb = []
-
         for i in allComb:
             covered = set()
             for j in i:
@@ -211,28 +227,32 @@ class HungarianAssignment:
         verLines = [VertLine(i) for i in xrange(self.row) if i in tickCols]
         bestComb = horLines + verLines
 
-        print '\n Marking unmarked rows and marked cols:  ', len(bestComb)
+        print '\n Marking unmarked rows & marked cols:  ', len(bestComb), '\n'
         for i in bestComb:
             print '\t%s line through %s : %d' % (i.type, i.across, i.pos)
+        print delimiter
 
         if horLines + verLines == self.row:
-            print '\n Current solution is optimal'
+            print '\n Current solution is optimal\n'
             curAssignments, totalVal = self.getAssignment(), 0
-            print '\n  The assignments are as follows: \n',
+            print '\n  The assignments are as follows: \n\n',
+            self.finalResult = '\n Optimal assignments are as follows: \n\n'
             for i in curAssignments:
                 x, y = i[0], i[1]
-                print '\t At: ', x, y, ' Value: ',  _backup[x][y]
+                print '\t At: ', x, y, ' Value: ',  _backup[x][y], '\n'
+                self.finalResult += '\t At: %d %d \tValue: %d\n\n' % (
+                    x, y, _backup[x][y])
                 totalVal += _backup[x][y]
+            self.finalResult += '\n\n Minimum cost incurred: %d\n ' % (
+                totalVal)
+            print delimiter
             return True
         else:
-            print '\n Current solution isn\'t optimal as lines are not enough'
-            print ' Now going for uncovering elements pass'
+            print '\n Current solution isn\'t optimal : lines aren\'t enough\n'
+            print ' Now going for uncovering elements pass\n\n'
             self.smallestElements(bestComb)
             self.getZeroPositions()
-            print '\n New Zeros are located at follows:',
-            for i in self.Z:
-                print i,
-            print
+            self.printZeroLocations()
             self.checkAssignments()
 
     def smallestElements(self, bestComb):
@@ -274,7 +294,7 @@ class HungarianAssignment:
                 elif MASK[i][j] == I_MASK:
                     self.M[i][j] += minElem
 
-        print '\n Uncovered matrix',
+        print '\n Uncovered matrix\n',
         self.printMatrix()
 
 
@@ -302,6 +322,7 @@ def readInput():
         if n != m:
             print '\n Matrices aren\'t of the same order'
             print ' Adding dummy\n'
+            print delimiter
             solver.getDummy(n, m)
         else:
             print '\n No dummy required'
@@ -318,17 +339,27 @@ def fillFromGUI():
     """Creates Hungarian instance problem using GUI filled matrix"""
     solver = HungarianAssignment()
     n, m = _GUI_ROW, _GUI_COL
-    solver.M = _GUI_M
+    # solver.M = _GUI_M
+    _m = max(n, m)
+    solver.M = [[-1 for a in xrange(_m)]
+                for b in xrange(_m)]  # denotes the matrix
     if n != m:
-        print '\n Matrices aren\'t of the same order'
+        print '\n Matrices aren\'t of the same order\n'
         print ' Adding dummy\n'
-        solver.getDummy(n, m)
+
+    for i in xrange(_m):
+        for j in xrange(_m):
+            try:
+                solver.M[i][j] = _GUI_M[i][j]
+            except IndexError:
+                solver.M[i][j] = 0
+
     solver.row = solver.col = max(n, m)
     return solver
 
 
-def main():
-    global _backup
+def main(fileHandle=None):
+    global _backup, finalResult
     # Obtain matrix from file
     # or use matrix already filled by the GUI
     solver = fillFromGUI() if _GUI_M else readInput()
@@ -337,12 +368,12 @@ def main():
         print ' Error occured during execution\n'
         exit()
     _backup = solver.M[:]
-    print '\n Matrix as in file:',
+    print '\n Received Matrix: \n',
     solver.printMatrix()
 
     # Reduce the matrix
     solver.reduceMatrix()
-    print '\n Reduced Matrix:',
+    print '\n Reduced Matrix: \n',
     solver.printMatrix()
 
     # Get zero positions from the array
@@ -351,7 +382,7 @@ def main():
 
     # Check assignments
     solver.checkAssignments()
-
+    finalResult = solver.finalResult
 
 if __name__ == '__main__':
     main()
