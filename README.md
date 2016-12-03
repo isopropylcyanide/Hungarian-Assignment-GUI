@@ -9,6 +9,42 @@ __Prerequisite__:
 
    [How to install python on Windows](http://www.howtogeek.com/197947/how-to-install-python-on-windows/)
 
+#GUI MODEL
+
+__Features__:
+
+   Create any number of rows and columns.
+
+   View the final result directly.  
+
+   View step wise results.
+
+   Save the result to a file.
+
+
+For GUI to work correctly you need to install tkinter module on your machine.
+    
+    sudo pip install tkinter
+    
+    
+
+**Usage**:
+
+   Simply open up a terminal and run the program 
+        
+        python GUI_HA.py
+        
+![Start](http://i.imgur.com/4RTzmC5.jpg)
+    
+![Fill](http://i.imgur.com/I9MMm6Z.jpg)
+
+![Result](http://i.imgur.com/uRbJ6wv.jpg)   
+
+![Output](http://i.imgur.com/kh5Bmgu.jpg)
+       
+
+
+#Command Line Interface MODEL
 
 **Usage**:
 
