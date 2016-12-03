@@ -8,6 +8,13 @@ __Prerequisite__:
    We need to have python installed on your Windows/Linux machine. Just like we need a compiler for C++, we need the python interpreter installed. It is pre-installed on linux.
 
    [How to install python on Windows](http://www.howtogeek.com/197947/how-to-install-python-on-windows/)
+   
+#Direct Run
+ 
+You can choose to run the program without installing python / tkinter. Navigate to Direct Executables folder
+Run **hungarianAssignment.exe** to start the program.
+Linux users may use wine to directly run the executable
+
 
 #GUI MODEL
 
