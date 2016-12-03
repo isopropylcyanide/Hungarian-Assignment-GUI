@@ -1,5 +1,6 @@
 import Tkinter as Tk
 import tkMessageBox
+import tkFileDialog
 import assignmentProb as CLI
 from cStringIO import StringIO
 import sys
@@ -58,13 +59,15 @@ class Hungarian:
         self.bottomFrame = Tk.Frame(self.root, pady=50)
         self.bottomFrame.pack(side=Tk.TOP)
 
-        self.quitBut = Tk.Button(self.bottomFrame, text="QUIT",
-                                 fg="red", command=self.topFrame.quit)
+        self.quitBut = Tk.Button(self.bottomFrame, text="QUIT", fg="green",
+                                 font=("Times New Roman", 16), bg="#1f0b3b",
+                                 command=self.topFrame.quit)
 
         self.quitBut.pack(side=Tk.LEFT, padx=50)
 
-        self.nextBut = Tk.Button(
-            self.bottomFrame, text="Continue", command=self.validateInput)
+        self.nextBut = Tk.Button(self.bottomFrame, fg="green", text="CONTINUE",
+                                 font=("Times New Roman", 16), bg="#1f0b3b",
+                                 command=self.validateInput)
         self.nextBut.pack(side=Tk.RIGHT, padx=60)
 
     def validateInput(self):
@@ -101,6 +104,7 @@ class Hungarian:
         for i in xrange(self.r):
             for j in xrange(self.c):
                 self.Mat_entry[i][j] = Tk.Entry(midFrame, justify=Tk.CENTER,
+                                                fg="orange", bg="black",
                                                 width=6, font=("", 16))
                 self.Mat_entry[i][j].insert(0, "0")
 
@@ -112,26 +116,35 @@ class Hungarian:
         bottomFrame = Tk.Frame(self.root, pady=50)
         bottomFrame.pack(side=Tk.TOP)
 
-        self.resetBut = Tk.Button(bottomFrame, text="RESET",
-                                  fg="red", command=self.resetAssignments)
-        self.backBut = Tk.Button(bottomFrame, text="BACK",
-                                 fg="dark green", command=self.restoreWindow)
-        self.solveBut = Tk.Button(
-            bottomFrame, text="Solve", command=self.solveModel)
+        self.resetBut = Tk.Button(bottomFrame, text="RESET", bg="#1f0b3b",
+                                  fg="cyan", font=("Times New Roman", 16),
+                                  command=self.resetAssignments)
+        self.backBut = Tk.Button(bottomFrame, text="BACK", bg="#1f0b3b",
+                                 fg="cyan", font=("Times New Roman", 16),
+                                 command=self.restoreWindow)
+        self.solveBut = Tk.Button(bottomFrame, text="SOLVE", bg="#1f0b3b",
+                                  command=self.solveModel, fg="cyan",
+                                  font=("Times New Roman", 16))
 
-        self.resetBut.pack(side=Tk.LEFT, padx=50)
+        self.resetBut.pack(side=Tk.LEFT, padx=50, pady=50)
         self.backBut.pack(side=Tk.LEFT, padx=50)
         self.solveBut.pack(side=Tk.RIGHT, padx=60)
 
     def restoreWindow(self):
         """restores the user assignment window when back is pressed"""
-        for child in self.root.winfo_children():
-            child.pack_forget()
-        self.root.minsize(width=550, height=300)
-        self.root.title('HUNGARIAN ASSIGNMENT')
-        self.topFrame.pack()
-        self.midFrame.pack()
-        self.bottomFrame.pack()
+        if hasattr(self, "resultWindow"):
+            self.resultWindow.destroy()
+            for child in self.root.winfo_children():
+                child.destroy()
+            self.__init__(self.root)
+        else:
+            for child in self.root.winfo_children():
+                child.pack_forget()
+            self.root.minsize(width=550, height=300)
+            self.root.title('HUNGARIAN ASSIGNMENT')
+            self.topFrame.pack()
+            self.midFrame.pack()
+            self.bottomFrame.pack()
 
     def resetAssignments(self):
         """reset user assignments to zero"""
@@ -172,6 +185,7 @@ class Hungarian:
 
     def resultOptionWindow(self, created=False):
         """User can either view final result or the entire steps"""
+
         if not created:
             self.resultWindow = Tk.Toplevel(self.root)
             self.resultWindow.resizable(False, False)
@@ -184,17 +198,33 @@ class Hungarian:
         optMode.pack()
 
         modeABut = Tk.Button(self.resultWindow, text="View Final Result",
-                             fg="dark green", command=self.viewFinalResult,
+                             fg="white", command=self.viewFinalResult,
+                             bg="#6e054a", font=("Times New Roman", 16))
+        modeBBut = Tk.Button(self.resultWindow, text="View steps", fg="white",
+                             bg="#6e054a", command=self.viewIterationResult,
                              font=("Times New Roman", 16))
-        modeBBut = Tk.Button(self.resultWindow, text="View steps",
-                             fg="dark blue", command=self.viewIterationResult,
-                             font=("Times New Roman", 16))
-        backBut = Tk.Button(self.resultWindow, text="Modify assignments",
-                            fg="black", command=self.resultWindow.destroy,
+        backBut = Tk.Button(self.resultWindow, text="Modify / Back",
+                            bg="#6e054a", command=self.resultWindow.destroy,
+                            fg="white", font=("Times New Roman", 16))
+        saveBut = Tk.Button(self.resultWindow, text="Save final", fg="white",
+                            bg="#6e054a", command=self.saveResult,
                             font=("Times New Roman", 16))
+
         modeABut.pack(padx=10, pady=20)
         modeBBut.pack(padx=10, pady=30)
+        saveBut.pack(padx=10, pady=30)
         backBut.pack(padx=10, pady=30)
+
+    def saveResult(self):
+        """Saves the result on a file specified by the user"""
+        f = tkFileDialog.asksaveasfile(mode='w', defaultextension=".txt")
+        if f is None:
+            # asksaveasfile return `None` if dialog closed with "cancel".
+            return
+        # starts from `1.0`, not `0.0`
+        text2save = '\n'.join(self.stepResults.split(CLI.delimiter))
+        f.write(text2save)
+        f.close()
 
     def goBack(self, param):
         """ if param is false, simply clear current window
@@ -215,8 +245,8 @@ class Hungarian:
             self.resultWindow, text=self.finalResult, fg="blue", bg='white',
             font=("Times New Roman", 16))
 
-        backBut = Tk.Button(self.resultWindow, text="BACK", bg='white',
-                            fg="dark green",
+        backBut = Tk.Button(self.resultWindow, text="BACK", bg='black',
+                            fg="orange", font=("Times New Roman", 16),
                             command=lambda: self.goBack(True))
         resVar.pack(pady=30)
         backBut.pack(padx=10, pady=20)
@@ -244,11 +274,11 @@ class Hungarian:
             fg="blue", bg='white', font=("Times New Roman", 16))
         resVar.pack(pady=30)
 
-        nextBut = Tk.Button(self.resultWindow, text="NEXT STEP", bg='white',
-                            fg="dark green",
+        nextBut = Tk.Button(self.resultWindow, text="NEXT STEP", bg='black',
+                            fg="orange", font=("Times New Roman", 16),
                             command=lambda: showNextStep(resVar, gen))
-        backBut = Tk.Button(self.resultWindow, text="BACK", bg='white',
-                            fg="dark green",
+        backBut = Tk.Button(self.resultWindow, text="BACK", bg='black',
+                            fg="orange", font=("Times New Roman", 16),
                             command=lambda: self.goBack(True))
         nextBut.pack(side=Tk.LEFT, padx=60, pady=20)
         backBut.pack(side=Tk.LEFT, padx=60, pady=20)
