@@ -59,14 +59,14 @@ class Hungarian:
         self.bottomFrame = Tk.Frame(self.root, pady=50)
         self.bottomFrame.pack(side=Tk.TOP)
 
-        self.quitBut = Tk.Button(self.bottomFrame, text="QUIT", fg="green",
-                                 font=("Times New Roman", 16), bg="#1f0b3b",
+        self.quitBut = Tk.Button(self.bottomFrame, text="QUIT",
+                                 font=("Times New Roman", 16), fg="dark green",
                                  command=self.topFrame.quit)
 
         self.quitBut.pack(side=Tk.LEFT, padx=50)
 
-        self.nextBut = Tk.Button(self.bottomFrame, fg="green", text="CONTINUE",
-                                 font=("Times New Roman", 16), bg="#1f0b3b",
+        self.nextBut = Tk.Button(self.bottomFrame, text="CONTINUE",
+                                 font=("Times New Roman", 16), fg="dark green",
                                  command=self.validateInput)
         self.nextBut.pack(side=Tk.RIGHT, padx=60)
 
