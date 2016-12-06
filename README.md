@@ -43,7 +43,7 @@ For GUI to work correctly you need to install tkinter module on your machine.
         
 ![Start](http://i.imgur.com/4RTzmC5.jpg)
     
-![Fill](http://i.imgur.com/I9MMm6Z.jpg)
+![Fill](http://i.imgur.com/nJhx0bM.jpg)
 
 ![Result](http://i.imgur.com/uRbJ6wv.jpg)   
 
