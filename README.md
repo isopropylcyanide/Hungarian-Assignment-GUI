@@ -1,6 +1,6 @@
 ## [Hungarian Assignment](https://en.wikipedia.org/wiki/Hungarian_algorithm "Wiki") ##
 ### Python program to solve the assignment problem using Hungarian method ###
-
+----
 
 ### Motivation ###
 ```
@@ -47,7 +47,7 @@ remiss of the other aspects of programming.
 
 ----
 
-## Direct Run ##
+## Direct Run using binary (No installs needed) ##
  
 You can choose to run the program without installing python / tkinter. Navigate to Direct Executables folder
 Run ```hungarianAssignment.exe``` to start the program.
@@ -55,17 +55,15 @@ Linux users may use wine to directly run the executable
 
 ----
 
-### GUI MODE ###
+### Graphical Mode using Tkinter ###
 
-__Features__:
+* Create any number of rows and columns.
 
-   Create any number of rows and columns.
+* View the final result directly.  
 
-   View the final result directly.  
+* View step wise results.
 
-   View step wise results.
-
-   Save the result to a file.
+* Save the result to a file.
 
 
 For GUI to work correctly you need to install tkinter module on your machine.
@@ -92,9 +90,9 @@ For GUI to work correctly you need to install tkinter module on your machine.
 
 ### Command Line Interface (CLI) MODE ###
 
-#### Usage ####:
+#### Usage ####
 
-1) Use the input files present in the Testcases folder or 
+* Use the input files present in the Testcases folder or 
    generate a new file with the following standards:
    
         N M
@@ -121,9 +119,8 @@ Once the input file, say inputFile, is prepared run the program as follows:
 ![Running python](http://i.imgur.com/BQsIcwe.jpg)
    
    
-   
   
- 2)  Or you can simply use the already created 14 testcases using   
+ *  Or you can simply use the already created 14 testcases using   
  
   ```python
      python assignmentProb.py TestCases/A/inputA
@@ -134,4 +131,5 @@ Once the input file, say inputFile, is prepared run the program as follows:
 #### I want to contibute ####
 Please fork the project and submit a PR
 
-   
+
+----
