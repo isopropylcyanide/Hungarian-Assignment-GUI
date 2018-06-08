@@ -7,27 +7,27 @@
 During my four year undergraduate course majoring in Computer Science, we had an open elective course called as
 Operations Research. It employs techniques from other mathematical sciences, such as mathematical modeling, 
 statistical analysis,  and mathematical optimization, operations research arrives at optimal or near-optimal 
-solutions to complex decision-making problems.
+solutions to complex decision-making problems. It was taught by a teacher with a non programming background.
 
-At the end of the course, the teacher requested students from C.S/E.C.E to submit a program that solver the job
+At the end of the course, the teacher requested students from C.S/E.C.E to submit a program that solves the job
 assignment problem using the Hungarian method. Since, nobody from the class was interested, I took it up as a
 challenge. First I solved the problem of creating a command line program that reads the input which the user 
 provides in a file,  parses it and lists the maximum assignment possible using the Hungarian method. If no such
 method is possible, we let the user know.
 
 Before submitting the program as a python script, I realized that the teacher who requested the program shouldn't
-be dealing with the command line. Hence, I came across the tkinter Python library for creating GUI's.
-I researched for a day, and then went ahead executing the GUI. I was overjoyed.
+be dealing with the nitty gritties of command line. Hence, I came across the tkinter Python library for creating 
+GUI's. I researched for a day, and then went ahead executing the GUI with Tkinter. I was overjoyed.
 
 However, once again I was in a fix because while preparing the GitHub readme, in the prerequisites section, I 
 mentioned Python as it was necessary for the project. I was using a Linux Machine with all the utilities 
-installed. It doesn't take a genius to figure out that the machine on which my Sir would eventually run it,
-might not even contain the python binary, let alone GUI support for Tkinter. We can't expect him to install
-python now, can we?
+installed. It doesn't take a genius to figure out that the machine on which Sir would eventually run might not
+even contain the python binary, let alone GUI support for Tkinter. We can't expect him to install python now,
+can we?
 
 At the end, I converted the python program to an .exe executable that's portable enough to run on most 
 computers. I burnt the program onto a C.D, sparing him the troubles of git clone and submitted it to my professor.
-Needless to say, I received an email saying that the program was very helpful and he can now create custom
+Needless to say, I received an email saying that the program was very helpful and he can now quickly create custom
 questions and verify its correctness while checking the answer sheets. The fact that my GUI showed execution
 traces and the steps it took, were the icing on the cake.
 
