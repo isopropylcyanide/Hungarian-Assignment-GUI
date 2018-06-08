@@ -5,7 +5,7 @@
 ### Motivation ###
 ```
 During my four year undergraduate course majoring in Computer Science, we had an open elective course called as
-Operations Research. Itemploys techniques from other mathematical sciences, such as mathematical modeling, 
+Operations Research. It employs techniques from other mathematical sciences, such as mathematical modeling, 
 statistical analysis,  and mathematical optimization, operations research arrives at optimal or near-optimal 
 solutions to complex decision-making problems.
 
