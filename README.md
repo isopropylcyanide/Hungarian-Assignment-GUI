@@ -27,7 +27,7 @@ can we?
 
 At the end, I converted the python program to an .exe executable that's portable enough to run on most 
 computers. I burnt the program onto a C.D, sparing him the troubles of git clone and submitted it to my professor.
-Needless to say, I received an email saying that the program was very helpful and he can now quickly create custom
+Later that day, I received an email saying that the program was very helpful and he can now quickly create custom
 questions and verify its correctness while checking the answer sheets. The fact that my GUI showed execution
 traces and the steps it took, were the icing on the cake.
 
