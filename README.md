@@ -70,27 +70,17 @@ For GUI to work correctly you need to install tkinter module on your machine.
     
     sudo pip install tkinter
     
-    
+----    
 
-#### Usage ####:
+### Usage (GUI) ###
 
    Simply open up a terminal and run the program 
         
         python GUI_HA.py
-        
-![Start](http://i.imgur.com/4RTzmC5.jpg)
-    
-![Fill](http://i.imgur.com/nJhx0bM.jpg)
 
-![Result](http://i.imgur.com/uRbJ6wv.jpg)   
-
-![Output](http://i.imgur.com/kh5Bmgu.jpg)
-       
 ----
 
-### Command Line Interface (CLI) MODE ###
-
-#### Usage ####
+### Usage (Command Line Interface (CLI) MODE) ###
 
 * Use the input files present in the Testcases folder or 
    generate a new file with the following standards:
@@ -128,7 +118,29 @@ Once the input file, say inputFile, is prepared run the program as follows:
    
 ----
 
-#### I want to contibute ####
+## Examples ##
+
+### Example of a 4 x 4 matrix that's easily solvable by covering all zeroes ###
+![Start](http://i.imgur.com/4RTzmC5.jpg) ![Fill](http://i.imgur.com/nJhx0bM.jpg)
+![Result](http://i.imgur.com/uRbJ6wv.jpg) ![Output](http://i.imgur.com/kh5Bmgu.jpg)
+       
+----
+
+### Example of a 5 x 5 matrix that requires a second pass ###
+
+![5x5](https://user-images.githubusercontent.com/12872673/72884830-ccad8280-3d2c-11ea-866e-b83710dd9214.png)
+![Initial reduced matrix](https://user-images.githubusercontent.com/12872673/72884928-f8306d00-3d2c-11ea-9fba-648e5cfe22b0.png)
+![Covering zeroes](https://user-images.githubusercontent.com/12872673/72884987-0ed6c400-3d2d-11ea-8631-e60524b38299.png)
+![Not optimal](https://user-images.githubusercontent.com/12872673/72885016-1dbd7680-3d2d-11ea-9c7a-c5853167d9e6.png)
+![Prepare for second pass](https://user-images.githubusercontent.com/12872673/72885160-670dc600-3d2d-11ea-95b0-1efdbae28c31.png)
+![Updated lines](https://user-images.githubusercontent.com/12872673/72885222-7b51c300-3d2d-11ea-8c99-252892445719.png)
+![Optimal result](https://user-images.githubusercontent.com/12872673/72885249-87d61b80-3d2d-11ea-8718-5def63c95442.png)
+
+Note that this sample case was taken from [here](http://ecoursesonline.iasri.res.in/mod/resource/view.php?id=4955) at Example 2
+
+----
+
+### I want to contibute ###
 Please fork the project and submit a PR
 
 
